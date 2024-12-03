@@ -12,7 +12,7 @@ Ensure you have the following installed on your system:
 
 ## Setup
 
-1. Install dependencies:
+1. Install Angular dependencies:
 
    ```bash
    npm install
