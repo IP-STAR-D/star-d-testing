@@ -17,18 +17,18 @@ describe("End-to-End Exam Appointment Test", () => {
     cy.get('button[type="submit"]').click();
     cy.url().should("include", "/student/exams");
 
-    // Step 2: Click the "Examen Test" card
-    cy.contains("mat-card", "Examen Test").click();
+    // Step 2: Click the exam card
+    cy.contains("mat-card", examName).click();
 
     // Step 3: Fill in the appointment form and submit it
     cy.get('input[name="selected_date"]').clear().type("1/31/2025").blur();
 
     cy.get('input[name="selected_time_start"]').click();
-    cy.get("ngx-mat-timepicker-content button").contains("10").click(); // Select hour
+    cy.get("ngx-mat-timepicker-content button").contains("10").click();
     cy.get("span.mdc-button__label").contains("OK").click();
 
     cy.get('input[name="selected_time_end"]').click();
-    cy.get("ngx-mat-timepicker-content button").contains("11").click(); // Select hour
+    cy.get("ngx-mat-timepicker-content button").contains("11").click();
     cy.get("span.mdc-button__label").contains("OK").click();
 
     cy.get('mat-select[name="selected_classroom"]').click();
