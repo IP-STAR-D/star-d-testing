@@ -4,10 +4,8 @@ describe("Exams Page Test", () => {
     cy.url().should("include", "/login");
     cy.contains("h1", "Intra in contul tau").should("be.visible");
 
-    cy.get('input[id="email"]')
-      .should("be.visible")
-      .type("raul.luculescu@student.usv.ro");
-    cy.get('input[id="password"]').should("be.visible").type("password789");
+    cy.get('input[id="email"]').should("be.visible").type("raul.luculescu@student.usv.ro");
+    cy.get('input[id="password"]').should("be.visible").type("default_password");
 
     cy.contains("button", "Autentificare").click();
     cy.log("Click pe butonul de autentificare");
@@ -19,7 +17,7 @@ describe("Exams Page Test", () => {
   it("should display the exam cards, their status and the time range", () => {
     cy.get("mat-card").should("have.length.greaterThan", 0);
 
-    cy.get("mat-card-header h4").each(($el) => {
+    cy.get("mat-card-header h6").each(($el) => {
       cy.wrap($el).should("be.visible");
     });
 
@@ -42,16 +40,11 @@ describe("Exams Page Test", () => {
                   /^IN ASTEPTARE\s+\d{2}:\d{2}\s*-\s*\d{2}:\d{2}$/,
                   /^Nu exista programari pentru acest examen\.$/,
                 ];
-                expect(
-                  validPatterns.some((pattern) => pattern.test(combinedText))
-                ).to.be.true;
+                expect(validPatterns.some((pattern) => pattern.test(combinedText))).to.be.true;
               });
           });
       } else {
-        cy.wrap($el)
-          .find("div.text-gray-500")
-          .invoke("text")
-          .should("eq", "Nu exista programari pentru acest examen.");
+        cy.wrap($el).find("div.text-gray-500").invoke("text").should("eq", "Nu exista programari pentru acest examen.");
       }
     });
   });

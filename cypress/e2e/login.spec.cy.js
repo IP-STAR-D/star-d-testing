@@ -25,7 +25,7 @@ describe("Login Page Tests", () => {
 
   it("should allow valid login", () => {
     cy.get('input[id="email"]').type("dorin.birsan@student.usv.ro");
-    cy.get('input[id="password"]').type("password123");
+    cy.get('input[id="password"]').type("default_password");
     cy.get('button[type="submit"]').click();
     cy.url().should("include", "/student/exams");
   });
