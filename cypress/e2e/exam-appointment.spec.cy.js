@@ -23,16 +23,24 @@ describe("End-to-End Exam Appointment Test", () => {
     // Step 3: Fill in the appointment form and submit it
     cy.get('input[name="selected_date"]').clear().type("1/31/2025").blur();
 
+    cy.wait(500);
+
     cy.get('input[name="selected_time_start"]').click();
     cy.get("ngx-mat-timepicker-content button").contains("10").click();
     cy.get("span.mdc-button__label").contains("OK").click();
+
+    cy.wait(500);
 
     cy.get('input[name="selected_time_end"]').click();
     cy.get("ngx-mat-timepicker-content button").contains("11").click();
     cy.get("span.mdc-button__label").contains("OK").click();
 
+    cy.wait(500);
+
     cy.get('mat-select[name="selected_classroom"]').click();
     cy.get("mat-option").first().click();
+
+    cy.wait(500);
 
     cy.get('button[type="submit"]').click();
 
